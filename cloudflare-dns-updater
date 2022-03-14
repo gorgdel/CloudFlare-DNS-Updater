@@ -1,0 +1,14 @@
+#!/bin/sh
+
+zone='dellas.id.au'
+dns[0]='dellas.id.au'
+dns[1]='home'
+dns[2]='print'
+dns[3]='steam'
+dns[4]='vaultwarden'
+
+
+
+
+
+
