@@ -1,16 +1,20 @@
 #!/bin/sh
 
+# add your zone here
 zone='examplezone.com'
+
+# add your dns records here
 dns[0]='example1.examplezone.com'
 dns[1]='example2.examplezone.com'
 dns[2]='example3.examplezone.com'
 dns[3]='example4.examplezone.com'
 dns[4]='example5.examplezone.com'
 
-
+# credentials for api key/email
 email='YOUR-EMAIL'
 key='YOUR-API-KEY'
 
+# get your current ISP IPv4
 ip=$(curl -s -X GET https://checkip.amazonaws.com)
 
 echo "Current IP is $ip"
@@ -27,8 +31,6 @@ dnsrecordid=$(curl -s -X GET "https://api.cloudflare.com/client/v4/zones/$zoneid
   -H "X-Auth-Email: $email" \
   -H "Authorization: Bearer $key" \
   -H "Content-Type: application/json")
-  echo $dnsrecordid
-  echo $i
 
 curl -s -X PUT "https://api.cloudflare.com/client/v4/zones/$zoneid/dns_records/$dnsrecordid" \
   -H "X-Auth-Email: $email" \
