@@ -1,11 +1,11 @@
 #!/bin/sh
 
-zone='dellas.id.au'
-dns[0]='dellas.id.au'
-dns[1]='home.dellas.id.au'
-dns[2]='print.dellas.id.au'
-dns[3]='steam.dellas.id.au'
-dns[4]='vaultwarden.dellas.id.au'
+zone='examplezone.com'
+dns[0]='example1.examplezone.com'
+dns[1]='example2.examplezone.com'
+dns[2]='example3.examplezone.com'
+dns[3]='example4.examplezone.com'
+dns[4]='example5.examplezone.com'
 
 
 email='YOUR-EMAIL'
