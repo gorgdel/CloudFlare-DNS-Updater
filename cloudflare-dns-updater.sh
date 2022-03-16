@@ -21,19 +21,19 @@ for i in ${dns[@]}
 do
 zoneid=$(curl -s -X GET "https://api.cloudflare.com/client/v4/zones?name=$zone&status=active" \
   -H "Authorization: Bearer $key" \
-  -H "Content-Type: application/json" | jq -r '{"result"}[] | .[0] | .id')
+  -H "Content-Type: application/json")
 
 dnsrecordid=$(curl -s -X GET "https://api.cloudflare.com/client/v4/zones/$zoneid/dns_records?type=A&name=$i" \
   -H "X-Auth-Email: $email" \
   -H "Authorization: Bearer $key" \
-  -H "Content-Type: application/json" | jq -r '{"result"}[] | .[0] | .id')
+  -H "Content-Type: application/json")
   echo $dnsrecordid
   echo $i
 
 curl -s -X PUT "https://api.cloudflare.com/client/v4/zones/$zoneid/dns_records/$dnsrecordid" \
   -H "X-Auth-Email: $email" \
   -H "Authorization: Bearer $key" \  -H "Content-Type: application/json" \
-  --data "{\"type\":\"A\",\"name\":\"$i\",\"content\":\"$ip\",\"ttl\":1,\"proxied\":true}" | jq
+  --data "{\"type\":\"A\",\"name\":\"$i\",\"content\":\"$ip\",\"ttl\":1,\"proxied\":true}"
 
   
 done
